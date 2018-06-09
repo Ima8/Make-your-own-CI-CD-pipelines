@@ -3,14 +3,13 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.11.1-stretch
-    working_directory: ~/repo
+    working_directory: ~/repo/example_worker
     branches:
       only:
         - master
         - staging
     steps:
       - checkout
-      - run: cd example_worker
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
