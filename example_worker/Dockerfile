@@ -1,15 +1,14 @@
 FROM node:alpine
 
 # Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
 COPY package.json /usr/src/app/
-RUN npm install
 
-# Bundle app source
-COPY . /usr/src/app
+ADD . /app/
+ADD node_modules /app/node_modules
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
+
