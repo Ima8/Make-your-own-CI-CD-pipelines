@@ -3,4 +3,4 @@ services:
   web:
     image: ima8/code_mania_demo
     ports:
-      - "80:3000"
+      - "3000:3000"
