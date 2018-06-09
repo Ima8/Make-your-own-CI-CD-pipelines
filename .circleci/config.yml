@@ -26,3 +26,16 @@ jobs:
           command: |
               docker build -t ima8/code_mania_demo:latest .
               docker push ima8/code_mania_demo:latest
+      - run:
+          name: "Call to rancher to deploy"
+          command: |
+              docker run --rm -it \
+                -e CATTLE_ACCESS_KEY="$CATTLE_ACCESS_KEY" \
+                -e CATTLE_SECRET_KEY="$CATTLE_SECRET_KEY" \
+                -e CATTLE_URL="$CATTLE_URL" \
+                etlweather/gaucho upgrade $RANCHER_API_SERVICE \
+                --imageUuid 'docker:ima8/code_mania_demo:latest' \
+                --batch_size 3 \
+                --auto_complete --timeout 600 \
+                /
+
