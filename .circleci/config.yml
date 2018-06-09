@@ -45,7 +45,7 @@ jobs:
                 -e CATTLE_URL="$CATTLE_URL" \
                 etlweather/gaucho upgrade $RANCHER_API_SERVICE \
                 --imageUuid 'docker:ima8/code_mania_demo:latest' \
-                --batch_size 3 \
+                --batch_size 1 \
                 --auto_complete --timeout 600 \
                 /
             elif [ "${CIRCLE_BRANCH}" == "staging" ]; then
