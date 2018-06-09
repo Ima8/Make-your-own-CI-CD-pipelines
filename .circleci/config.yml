@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.11.1-stretch
+    working_directory: ~/repo
+    branches:
+      only:
+        - master
+        - staging
+    steps:
+      - checkout
+      - run: yarn install
+      - setup_remote_docker
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run:
+          name: "Build docker image and push to docker hub"
+          command: |
+              docker build -t after5logistics/after5-api:latest .
+              docker push after5logistics/after5-api:latest
+
