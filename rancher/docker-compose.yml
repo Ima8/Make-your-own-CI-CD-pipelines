@@ -8,7 +8,7 @@ services:
     links:
       - mysql
     environment:
-      - CATTLE_DB_CATTLE_MYSQL_HOST=mysql
+      - CATTLE_DB_CATTLE_MYSQL_HOST=mysql ## Your public ip
       - CATTLE_DB_CATTLE_MYSQL_PORT=3306
       - CATTLE_DB_CATTLE_MYSQL_NAME=rancher
       - CATTLE_DB_CATTLE_USERNAME=rancher
